@@ -21,6 +21,7 @@ package boofcv.alg.feature.detect.intensity.impl;
 import boofcv.misc.AutoTypeImage;
 import boofcv.misc.CircularIndex;
 import boofcv.misc.CodeGeneratorBase;
+import org.ddogleg.struct.FastQueue;
 
 import java.io.FileNotFoundException;
 
@@ -119,137 +120,67 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 	}
 
 	private void print() {
-		StateAction state = StateAction.FORWARDS;
-		int tabs = 1;
-		int start = 0;
-		int end = 0;
-		boolean undo = false;
-		boolean alternativePath = false;
-		boolean checkUpper = true;
-		int swaps[] = new int[ TOTAL_CIRCLE ];
-		int root[] = new int[ TOTAL_CIRCLE ];
+		FastQueue<Set> queue = new FastQueue<>(Set.class,true);
 
-		while( true ) {
-			System.out.println("tabs "+tabs+" start/end = "+start+"/"+end+" upper="+checkUpper+" undo="+undo+" state="+state+" root[end]="+root[end]);
-			if( undo ) {
-				if( start == end ) {
-					end -= 1;
-					printCloseIf(tabs);
+		Set active = queue.grow();
+		active.start = 0;
+		active.complete = false;
+		active.upper = true;
+		active.tabsAtZero = 1;
 
-					if( swaps[end] == 0 ) {
-						swaps[end] = 1;
-						tabs -= 1;
-						end -= 1;
-						start = end;
-						swaps[end] = 1;
-						checkUpper = !checkUpper;
-						state = StateAction.FORWARDS;
-						undo = false;
-						alternativePath = true;
-					} else {
-						tabs -= 1;
-						end -= 1;
-					}
+		while( queue.size > 0 ) {
+			active = queue.getTail();
+			System.out.println("start "+active.start+" "+active.stop+" "+active.upper);
+
+			int length = active.length();
+			int bit = active.start > active.stop ? active.start : active.stop;
+			printIf(length==0&&queue.size>1, active.tabsAtZero+length, bit, active.upper);
+
+			boolean createNext = false;
+			if( length+1 == minContinuous ) {
+				active.complete = true;
+				active.stop += 1;
+				createNext = true;
+			} else if( active.complete ){
+				if( queue.size == 1 ) {
+					active.stop -= 1;
+					active.start = TOTAL_CIRCLE - minContinuous + active.stop + 1;
 				} else {
-					switch (state) {
-						case FORWARDS: {
-
-							end -= 1;
-							if (possibleToComplete(end) && swaps[end] < 1) {
-								start = end;
-								checkUpper = !checkUpper;
-								undo = false;
-								alternativePath = true;
-								swaps[end] = 1;
-							} else {
-								printCloseIf(tabs);
-								tabs -= 1;
-							}
-						} break;
-
-						case BACKWARDS: {
-							// Could potentially run a bit faster it it considered
-							// lower in reverse direction instead of undoing. but would make things
-							// more complex
-							start = CircularIndex.addOffset(start,1,TOTAL_CIRCLE);
-							printCloseIf(tabs);
-							tabs -= 1;
-							if( start == 0 ) {
-								if (possibleToComplete(end) && swaps[end] < 1) {
-									state = StateAction.FORWARDS;
-									swaps[end] = 1;
-									root[end] = end;
-									start = end;
-									checkUpper = !checkUpper;
-									alternativePath = true;
-								} else {
-									alternativePath = true;
-									start = TOTAL_CIRCLE-1;
-								}
-								end -= 1;
-								undo = false;
-							}
-						} break;
-					}
+					active.stop -= 1;
 				}
-			} else {
-				switch (state) {
-					case FORWARDS: {
-						root[end] = start;
-						printIf(alternativePath, tabs, end, checkUpper);
-						if (length(start, end) == minContinuous) {
-							// print logic for it completing the minimum number of continuous hits
-							printReturn(tabs, checkUpper?1:-1);
-							// now consider the situation where it failed the check
-							if (start == 0 && swaps[end] == 0 ) {
-								// see if it should consider the reverse direction
-								swaps[end] = -1;
-								start = 15;
-								state = StateAction.BACKWARDS;
-								alternativePath = true;
-							} else if (possibleToComplete(end) && swaps[end] < 1 ) {
-								// if it switched to checking the other direction could that finish?
-								swaps[end] = 1;
-								checkUpper = !checkUpper;
-								alternativePath = true;
-							} else {
-								// nope, can't consider any other possibilities
-								printCloseIf(tabs);
-								undo = true;
-								tabs -= 1;
-							}
-						} else {
-							alternativePath = false;
-							end += 1;
-							tabs += 1;
-							swaps[end] = 0;
-						}
-					}break;
+				createNext = true;
 
-					case BACKWARDS: {
-						printIf(alternativePath, tabs, start, checkUpper);
-						alternativePath = false;
-						if( length(start,end) > minContinuous ) {
-							printReturn(tabs, checkUpper?1:-1);
-							undo = true;
-						} else {
-							start -= 1;
-							tabs += 1;
-						}
-					} break;
+
+			} else {
+				active.stop += 1;
+			}
+
+			if( createNext ) {
+				int start= active.start > active.stop ? 0 : active.start;
+				while( !possibleToComplete(active.stop) && active.stop > start ) {
+					active.stop -= 1;
+				}
+				if( active.stop > active.start ) {
+					Set next = queue.grow();
+					next.start = next.stop = active.stop;
+					next.complete = false;
+					next.upper = !active.upper;
+					next.tabsAtZero = active.tabsAtZero + length;
+				} else if( active.upper ) {
+					active.upper = false;
+					active.stop = active.start = 0;
+					active.complete = false;
+				} else {
+					queue.removeTail();
 				}
 			}
+
 			try {
-				Thread.sleep(125);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-
-	}
-
-	private static int length( int start , int end ) {
-		return CircularIndex.distanceP(start,end,TOTAL_CIRCLE)+1;
 	}
 
 	private boolean possibleToComplete( int location ) {
@@ -288,6 +219,17 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 	enum StateAction {
 		FORWARDS,
 		BACKWARDS
+	}
+
+	public static class Set {
+		int start,stop;
+		boolean upper;
+		boolean complete;
+		int tabsAtZero;
+
+		public int length() {
+			return CircularIndex.distanceP(start,stop,TOTAL_CIRCLE);
+		}
 	}
 
 	public static void main( String args[] ) throws FileNotFoundException {
