@@ -126,52 +126,72 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 		active.start = 0;
 		active.complete = false;
 		active.upper = true;
-		active.tabsAtZero = 1;
+		active.tryTail = true;
+//		active.tabsAtZero = 1;
 
+		boolean useElse = false;
+
+		int tabs = 1;
 		while( queue.size > 0 ) {
 			active = queue.getTail();
 			System.out.println("start "+active.start+" "+active.stop+" "+active.upper);
 
-			int length = active.length();
-			int bit = active.start > active.stop ? active.start : active.stop;
-			printIf(length==0&&queue.size>1, active.tabsAtZero+length, bit, active.upper);
-
-			boolean createNext = false;
-			if( length+1 == minContinuous ) {
-				active.complete = true;
-				active.stop += 1;
-				createNext = true;
-			} else if( active.complete ){
-				if( queue.size == 1 ) {
-					active.stop -= 1;
-					active.start = TOTAL_CIRCLE - minContinuous + active.stop + 1;
-				} else {
-					active.stop -= 1;
-				}
-				createNext = true;
-
-
+			if( active.complete ) {
+				printCloseIf(tabs--);
 			} else {
-				active.stop += 1;
-			}
+				int bit = active.start > active.stop ? active.start : active.stop;
+				printIf(useElse, tabs++, bit, active.upper);
 
-			if( createNext ) {
-				int start= active.start > active.stop ? 0 : active.start;
-				while( !possibleToComplete(active.stop) && active.stop > start ) {
-					active.stop -= 1;
-				}
-				if( active.stop > active.start ) {
-					Set next = queue.grow();
-					next.start = next.stop = active.stop;
-					next.complete = false;
-					next.upper = !active.upper;
-					next.tabsAtZero = active.tabsAtZero + length;
-				} else if( active.upper ) {
-					active.upper = false;
-					active.stop = active.start = 0;
-					active.complete = false;
+				if( active.length() == minContinuous ) {
+					printReturn(--tabs,active.upper?1:-1);
+					if( queue.size == 1 && active.stop > 0 ) {
+						if( active.tryTail) {
+							// if it hasn't tried the bits on the tail do that now
+							useElse = true;
+							active.tryTail = false;
+							active.stop -= 1;
+							active.start = TOTAL_CIRCLE - 1;
+						} else {
+							// close all the tail if statements
+							for (int i = active.stop; i < minContinuous - 2; i++) {
+								printCloseIf(tabs--);
+							}
+							if (possibleToComplete(active.stop + 1)) {
+								// continue moving forward with a new assumption
+								useElse = true;
+								active.tryTail = true;
+								Set next = queue.grow();
+								next.start = next.stop = active.stop + 1;
+								next.complete = false;
+								next.upper = !active.upper;
+							} else {
+								printCloseIf(tabs--);
+								active.tryTail = false;
+								active.stop -= 1;
+								active.start = TOTAL_CIRCLE - 1;
+							}
+						}
+					} else {
+						active.complete = true;
+						while( !possibleToComplete(active.stop) && active.stop >= active.start ) {
+							printCloseIf(tabs--);
+							active.stop -= 1;
+						}
+						if( possibleToComplete(active.stop) ) {
+							Set next = queue.grow();
+							next.start = next.stop = active.stop;
+							next.complete = false;
+							next.upper = !active.upper;
+						} else {
+							queue.removeTail();
+						}
+					}
+				} else if( active.stop >= active.start ){
+					useElse = false;
+					active.stop += 1;
 				} else {
-					queue.removeTail();
+					useElse = false;
+					active.start -= 1;
 				}
 			}
 
@@ -225,10 +245,10 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 		int start,stop;
 		boolean upper;
 		boolean complete;
-		int tabsAtZero;
+		boolean tryTail;
 
 		public int length() {
-			return CircularIndex.distanceP(start,stop,TOTAL_CIRCLE);
+			return CircularIndex.distanceP(start,stop,TOTAL_CIRCLE)+1;
 		}
 	}
 
