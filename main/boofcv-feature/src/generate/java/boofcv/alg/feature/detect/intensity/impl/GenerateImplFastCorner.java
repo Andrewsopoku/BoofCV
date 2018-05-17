@@ -21,6 +21,7 @@ package boofcv.alg.feature.detect.intensity.impl;
 import boofcv.misc.AutoTypeImage;
 import boofcv.misc.CircularIndex;
 import boofcv.misc.CodeGeneratorBase;
+import boofcv.struct.image.ImageType;
 import org.ddogleg.struct.FastQueue;
 
 import java.io.FileNotFoundException;
@@ -49,11 +50,11 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 
 	@Override
 	public void generate() throws FileNotFoundException {
-//		int n[] = {9,10,11,12};
-//		AutoTypeImage d[] = {AutoTypeImage.U8,AutoTypeImage.F32};
+		int n[] = {9,10,11,12};
+		AutoTypeImage d[] = {AutoTypeImage.U8,AutoTypeImage.F32};
 
-		int n[] = {9};
-		AutoTypeImage d[] = {AutoTypeImage.U8};
+//		int n[] = {9};
+//		AutoTypeImage d[] = {AutoTypeImage.U8};
 
 		for( int minContinuous : n ) {
 			for( AutoTypeImage imageType : d ) {
@@ -78,9 +79,12 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 		out.println("}");
 	}
 
+	private void printPreamble() {
+		String imageClassName = imageType.getImageName(ImageType.Family.GRAY);
 
-	private void printPreamble() throws FileNotFoundException {
 		out.print(
+				"import boofcv.struct.image."+imageClassName+";\n" +
+				"\n"+
 				"/**\n" +
 				" * <p>\n" +
 				" * Contains logic for detecting fast corners. Pixels are sampled such that they can eliminate the most\n" +
@@ -93,14 +97,12 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 				" *\n" +
 				" * @author Peter Abeles\n" +
 				" */\n" +
-				"public class "+className+"\n" +
+				"public class "+className+" extends ImplFastHelper_"+imageType.getAbbreviatedType()+"\n" +
 				"{\n" +
-				"\tprotected int offsets[];\n" +
-				"\tprotected "+sumType+" minValue;\n"+
-				"\tprotected "+sumType+" maxValue;\n"+
-				"\tprotected "+sumType+" tol;\n"+
-				"\tprivate "+sumType+" lower;\n"+
-				"\tprivate "+sumType+" upper;\n\n");
+				"\n" +
+				"\tpublic "+className+"("+sumType+" pixelTol) {\n" +
+				"\t\tsuper(pixelTol);\n" +
+				"\t}\n\n");
 	}
 
 	private void printCheck() {
@@ -109,10 +111,12 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 				"\t/**\n" +
 				"\t * @return 1 = positive corner, 0 = no corner, -1 = negative corner\n" +
 				"\t */\n" +
-				"\tprotected int checkCorner( "+dataType+" data[], int index )\n" +
+				"\t@Override\n" +
+				"\tpublic final int checkPixel( int index )\n" +
 				"\t{\n" +
-				"\t\t"+sumType+" lower = Math.max(minValue,(data[index]"+bitwise+") - tol);\n"+
-				"\t\t"+sumType+" upper = Math.min(maxValue,(data[index]"+bitwise+") + tol);\n"+
+				"\t\tcenterValue = data[index]"+bitwise+";\n"+
+				"\t\tlower = centerValue - tol;\n"+
+				"\t\tupper = centerValue + tol;\n"+
 				"\n");
 
 		print();
@@ -178,6 +182,7 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 								active.start = TOTAL_CIRCLE - 1;
 								active.stop -= 1;
 							} else {
+								useElse = true;
 								printCloseIf(tabs--);
 								active.tryTail = false;
 								active.stop -= 1;
@@ -252,11 +257,6 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 			ret += "\t";
 		}
 		return ret;
-	}
-
-	enum StateAction {
-		FORWARDS,
-		BACKWARDS
 	}
 
 	public static class Set {
