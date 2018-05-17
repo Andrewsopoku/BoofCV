@@ -40,6 +40,9 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 	String bitwise;
 	String dataType;
 
+	boolean useElse;
+	int tabs;
+
 	public GenerateImplFastCorner() {
 		super(false);
 	}
@@ -90,15 +93,14 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 				" *\n" +
 				" * @author Peter Abeles\n" +
 				" */\n" +
-				"public class "+className+"n" +
+				"public class "+className+"\n" +
 				"{\n" +
-				"\n" +
-				"\tint offsets[]=new int[16]\n" +
-				"\t"+sumType+" minValue;\n"+
-				"\t"+sumType+" maxValue;\n"+
-				"\t"+sumType+" tol;\n"+
-				"\t"+sumType+" lower;\n"+
-				"\t"+sumType+" upper;\n\n");
+				"\tprotected int offsets[];\n" +
+				"\tprotected "+sumType+" minValue;\n"+
+				"\tprotected "+sumType+" maxValue;\n"+
+				"\tprotected "+sumType+" tol;\n"+
+				"\tprivate "+sumType+" lower;\n"+
+				"\tprivate "+sumType+" upper;\n\n");
 	}
 
 	private void printCheck() {
@@ -107,11 +109,10 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 				"\t/**\n" +
 				"\t * @return 1 = positive corner, 0 = no corner, -1 = negative corner\n" +
 				"\t */\n" +
-				"\t@Override\n" +
 				"\tprotected int checkCorner( "+dataType+" data[], int index )\n" +
 				"\t{\n" +
-				"\t"+sumType+" lower = Math.max(minValue,(data[index]"+bitwise+") - tol)\n"+
-				"\t"+sumType+" upper = Math.min(maxValue,(data[index]"+bitwise+") + tol)\n"+
+				"\t\t"+sumType+" lower = Math.max(minValue,(data[index]"+bitwise+") - tol);\n"+
+				"\t\t"+sumType+" upper = Math.min(maxValue,(data[index]"+bitwise+") + tol);\n"+
 				"\n");
 
 		print();
@@ -127,25 +128,34 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 		active.complete = false;
 		active.upper = true;
 		active.tryTail = true;
-//		active.tabsAtZero = 1;
 
-		boolean useElse = false;
+		useElse = false;
 
-		int tabs = 1;
+		tabs = 2;
 		while( queue.size > 0 ) {
 			active = queue.getTail();
-			System.out.println("start "+active.start+" "+active.stop+" "+active.upper);
 
+			// See if it's done or switching the check on bit zero
+			if( queue.size == 1 && active.stop < 0 ) {
+				if( active.upper ) {
+					active.start = active.stop = 0;
+					active.upper = false;
+					active.tryTail = true;
+					useElse = true;
+				} else {
+					break;
+				}
+			}
 			if( active.complete ) {
-				printCloseIf(tabs--);
+				undoThenForwards(queue, active);
 			} else {
 				int bit = active.start > active.stop ? active.start : active.stop;
 				printIf(useElse, tabs++, bit, active.upper);
 
 				if( active.length() == minContinuous ) {
 					printReturn(--tabs,active.upper?1:-1);
-					if( queue.size == 1 && active.stop > 0 ) {
-						if( active.tryTail) {
+					if( queue.size == 1 && active.stop >= 0 ) {
+						if (active.tryTail) {
 							// if it hasn't tried the bits on the tail do that now
 							useElse = true;
 							active.tryTail = false;
@@ -159,11 +169,14 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 							if (possibleToComplete(active.stop + 1)) {
 								// continue moving forward with a new assumption
 								useElse = true;
-								active.tryTail = true;
 								Set next = queue.grow();
 								next.start = next.stop = active.stop + 1;
 								next.complete = false;
 								next.upper = !active.upper;
+
+								active.tryTail = false;
+								active.start = TOTAL_CIRCLE - 1;
+								active.stop -= 1;
 							} else {
 								printCloseIf(tabs--);
 								active.tryTail = false;
@@ -173,18 +186,7 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 						}
 					} else {
 						active.complete = true;
-						while( !possibleToComplete(active.stop) && active.stop >= active.start ) {
-							printCloseIf(tabs--);
-							active.stop -= 1;
-						}
-						if( possibleToComplete(active.stop) ) {
-							Set next = queue.grow();
-							next.start = next.stop = active.stop;
-							next.complete = false;
-							next.upper = !active.upper;
-						} else {
-							queue.removeTail();
-						}
+						undoThenForwards(queue, active);
 					}
 				} else if( active.stop >= active.start ){
 					useElse = false;
@@ -194,12 +196,28 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 					active.start -= 1;
 				}
 			}
+		}
+		printCloseIf(2);
+		printReturn(1,0);
+		System.out.println("Done");
+	}
 
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+	private void undoThenForwards(FastQueue<Set> queue, Set active) {
+		while( !possibleToComplete(active.stop) && active.stop >= active.start ) {
+			printCloseIf(tabs--);
+			active.stop -= 1;
+		}
+		if( possibleToComplete(active.stop) && active.stop > active.start ) {
+			Set next = queue.grow();
+			next.start = next.stop = active.stop;
+			next.complete = false;
+			next.upper = !active.upper;
+			useElse = true;
+			active.stop -= 1;
+		} else {
+			useElse = true;
+			printCloseIf(tabs--);
+			queue.removeTail();
 		}
 	}
 
