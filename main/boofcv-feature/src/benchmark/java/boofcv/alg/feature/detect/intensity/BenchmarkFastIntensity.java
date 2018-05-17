@@ -18,7 +18,8 @@
 
 package boofcv.alg.feature.detect.intensity;
 
-import boofcv.alg.feature.detect.intensity.impl.ImplFastHelper_U8;
+import boofcv.alg.feature.detect.intensity.impl.ImplFastCorner12_U8;
+import boofcv.alg.feature.detect.intensity.impl.ImplFastCorner9_U8;
 import boofcv.alg.misc.GImageMiscOps;
 import boofcv.core.image.GeneralizedImageOps;
 import boofcv.misc.PerformerBase;
@@ -58,7 +59,7 @@ public class BenchmarkFastIntensity<T extends ImageGray<T>> {
 	}
 
 	public class FAST9 extends PerformerBase {
-		ImplFastIntensity9<GrayU8> corner = new ImplFastIntensity9<>(new ImplFastHelper_U8(60));
+		FastCornerDetector<GrayU8> corner = new FastCornerDetector<>(new ImplFastCorner9_U8(60));
 
 		@Override
 		public void process() {
@@ -67,7 +68,7 @@ public class BenchmarkFastIntensity<T extends ImageGray<T>> {
 	}
 
 	public class FAST12 extends PerformerBase {
-		ImplFastIntensity12<GrayU8> corner = new ImplFastIntensity12<>(new ImplFastHelper_U8(60));
+		FastCornerDetector<GrayU8> corner = new FastCornerDetector<>(new ImplFastCorner12_U8(60));
 
 		@Override
 		public void process() {

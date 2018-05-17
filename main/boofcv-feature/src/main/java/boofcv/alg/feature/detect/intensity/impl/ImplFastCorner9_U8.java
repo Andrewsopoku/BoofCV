@@ -37,2384 +37,18 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 		super(pixelTol);
 	}
 
-	/**
-	 * @return 1 = positive corner, 0 = no corner, -1 = negative corner
-	 */
-	@Override
-	public final int checkPixel( int index )
+	public final boolean upper7( int index )
 	{
-		centerValue = data[index]& 0xFF;
-		lower = centerValue - tol;
-		upper = centerValue + tol;
-
-		if( (data[offsets[0]]& 0xFF) > upper ) {
-			if( (data[offsets[1]]& 0xFF) > upper ) {
-				if( (data[offsets[2]]& 0xFF) > upper ) {
-					if( (data[offsets[3]]& 0xFF) > upper ) {
-						if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											return 1;
-										} else if( (data[offsets[15]]& 0xFF) > upper ) {
-											return 1;
-										}
-									} else if( (data[offsets[15]]& 0xFF) > upper ) {
-										if( (data[offsets[14]]& 0xFF) > upper ) {
-											return 1;
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[15]]& 0xFF) > upper ) {
-									if( (data[offsets[14]]& 0xFF) > upper ) {
-										if( (data[offsets[13]]& 0xFF) > upper ) {
-											return 1;
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[15]]& 0xFF) > upper ) {
-								if( (data[offsets[14]]& 0xFF) > upper ) {
-									if( (data[offsets[13]]& 0xFF) > upper ) {
-										if( (data[offsets[12]]& 0xFF) > upper ) {
-											return 1;
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[15]]& 0xFF) > upper ) {
-							if( (data[offsets[14]]& 0xFF) > upper ) {
-								if( (data[offsets[13]]& 0xFF) > upper ) {
-									if( (data[offsets[12]]& 0xFF) > upper ) {
-										if( (data[offsets[11]]& 0xFF) > upper ) {
-											return 1;
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															return -1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					} else if( (data[offsets[15]]& 0xFF) > upper ) {
-						if( (data[offsets[14]]& 0xFF) > upper ) {
-							if( (data[offsets[13]]& 0xFF) > upper ) {
-								if( (data[offsets[12]]& 0xFF) > upper ) {
-									if( (data[offsets[11]]& 0xFF) > upper ) {
-										if( (data[offsets[10]]& 0xFF) > upper ) {
-											return 1;
-										}
-									}
-								}
-							}
-						}
-					} else if( (data[offsets[3]]& 0xFF) < lower ) {
-						if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														return -1;
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															return 1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				} else if( (data[offsets[15]]& 0xFF) > upper ) {
-					if( (data[offsets[14]]& 0xFF) > upper ) {
-						if( (data[offsets[13]]& 0xFF) > upper ) {
-							if( (data[offsets[12]]& 0xFF) > upper ) {
-								if( (data[offsets[11]]& 0xFF) > upper ) {
-									if( (data[offsets[10]]& 0xFF) > upper ) {
-										if( (data[offsets[9]]& 0xFF) > upper ) {
-											return 1;
-										}
-									}
-								}
-							}
-						}
-					}
-				} else if( (data[offsets[2]]& 0xFF) < lower ) {
-					if( (data[offsets[3]]& 0xFF) < lower ) {
-						if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													return -1;
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															return 1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					} else if( (data[offsets[3]]& 0xFF) > upper ) {
-						if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														return 1;
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															return -1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			} else if( (data[offsets[15]]& 0xFF) > upper ) {
-				if( (data[offsets[14]]& 0xFF) > upper ) {
-					if( (data[offsets[13]]& 0xFF) > upper ) {
-						if( (data[offsets[12]]& 0xFF) > upper ) {
-							if( (data[offsets[11]]& 0xFF) > upper ) {
-								if( (data[offsets[10]]& 0xFF) > upper ) {
-									if( (data[offsets[9]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											return 1;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			} else if( (data[offsets[1]]& 0xFF) < lower ) {
-				if( (data[offsets[2]]& 0xFF) < lower ) {
-					if( (data[offsets[3]]& 0xFF) < lower ) {
-						if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												return -1;
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															return 1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					} else if( (data[offsets[3]]& 0xFF) > upper ) {
-						if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														return 1;
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															return -1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				} else if( (data[offsets[2]]& 0xFF) > upper ) {
-					if( (data[offsets[3]]& 0xFF) > upper ) {
-						if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													return 1;
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															return -1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					} else if( (data[offsets[3]]& 0xFF) < lower ) {
-						if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														return -1;
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															return 1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
+		if( (data[index+offsets[7]]& 0xFF) > upper ) {
+			if( (data[index+offsets[8]]& 0xFF) > upper ) {
+				if( (data[index+offsets[9]]& 0xFF) > upper ) {
+					if( (data[index+offsets[10]]& 0xFF) > upper ) {
+						if( (data[index+offsets[11]]& 0xFF) > upper ) {
+							if( (data[index+offsets[12]]& 0xFF) > upper ) {
+								if( (data[index+offsets[13]]& 0xFF) > upper ) {
+									if( (data[index+offsets[14]]& 0xFF) > upper ) {
+										if( (data[index+offsets[15]]& 0xFF) > upper ) {
+											return true;
 										}
 									}
 								}
@@ -2423,1206 +57,22 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 					}
 				}
 			}
-		} else if( (data[offsets[0]]& 0xFF) < lower ) {
-			if( (data[offsets[1]]& 0xFF) < lower ) {
-				if( (data[offsets[2]]& 0xFF) < lower ) {
-					if( (data[offsets[3]]& 0xFF) < lower ) {
-						if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											return -1;
-										} else if( (data[offsets[15]]& 0xFF) < lower ) {
-											return -1;
-										}
-									} else if( (data[offsets[15]]& 0xFF) < lower ) {
-										if( (data[offsets[14]]& 0xFF) < lower ) {
-											return -1;
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[15]]& 0xFF) < lower ) {
-									if( (data[offsets[14]]& 0xFF) < lower ) {
-										if( (data[offsets[13]]& 0xFF) < lower ) {
-											return -1;
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[15]]& 0xFF) < lower ) {
-								if( (data[offsets[14]]& 0xFF) < lower ) {
-									if( (data[offsets[13]]& 0xFF) < lower ) {
-										if( (data[offsets[12]]& 0xFF) < lower ) {
-											return -1;
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[15]]& 0xFF) < lower ) {
-							if( (data[offsets[14]]& 0xFF) < lower ) {
-								if( (data[offsets[13]]& 0xFF) < lower ) {
-									if( (data[offsets[12]]& 0xFF) < lower ) {
-										if( (data[offsets[11]]& 0xFF) < lower ) {
-											return -1;
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															return 1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					} else if( (data[offsets[15]]& 0xFF) < lower ) {
-						if( (data[offsets[14]]& 0xFF) < lower ) {
-							if( (data[offsets[13]]& 0xFF) < lower ) {
-								if( (data[offsets[12]]& 0xFF) < lower ) {
-									if( (data[offsets[11]]& 0xFF) < lower ) {
-										if( (data[offsets[10]]& 0xFF) < lower ) {
-											return -1;
-										}
-									}
-								}
-							}
-						}
-					} else if( (data[offsets[3]]& 0xFF) > upper ) {
-						if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														return 1;
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															return -1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				} else if( (data[offsets[15]]& 0xFF) < lower ) {
-					if( (data[offsets[14]]& 0xFF) < lower ) {
-						if( (data[offsets[13]]& 0xFF) < lower ) {
-							if( (data[offsets[12]]& 0xFF) < lower ) {
-								if( (data[offsets[11]]& 0xFF) < lower ) {
-									if( (data[offsets[10]]& 0xFF) < lower ) {
-										if( (data[offsets[9]]& 0xFF) < lower ) {
-											return -1;
-										}
-									}
-								}
-							}
-						}
-					}
-				} else if( (data[offsets[2]]& 0xFF) > upper ) {
-					if( (data[offsets[3]]& 0xFF) > upper ) {
-						if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													return 1;
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															return -1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					} else if( (data[offsets[3]]& 0xFF) < lower ) {
-						if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														return -1;
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																return 1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						} else if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															return 1;
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	return -1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																return -1;
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	return 1;
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
+		}
+		return false;
+	}
+
+	public final boolean lower7( int index )
+	{
+		if( (data[index+offsets[7]]& 0xFF) < lower ) {
+			if( (data[index+offsets[8]]& 0xFF) < lower ) {
+				if( (data[index+offsets[9]]& 0xFF) < lower ) {
+					if( (data[index+offsets[10]]& 0xFF) < lower ) {
+						if( (data[index+offsets[11]]& 0xFF) < lower ) {
+							if( (data[index+offsets[12]]& 0xFF) < lower ) {
+								if( (data[index+offsets[13]]& 0xFF) < lower ) {
+									if( (data[index+offsets[14]]& 0xFF) < lower ) {
+										if( (data[index+offsets[15]]& 0xFF) < lower ) {
+											return true;
 										}
 									}
 								}
@@ -3630,62 +80,54 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 						}
 					}
 				}
-			} else if( (data[offsets[15]]& 0xFF) < lower ) {
-				if( (data[offsets[14]]& 0xFF) < lower ) {
-					if( (data[offsets[13]]& 0xFF) < lower ) {
-						if( (data[offsets[12]]& 0xFF) < lower ) {
-							if( (data[offsets[11]]& 0xFF) < lower ) {
-								if( (data[offsets[10]]& 0xFF) < lower ) {
-									if( (data[offsets[9]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											return -1;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * @return 1 = positive corner, 0 = no corner, -1 = negative corner
+	 */
+	@Override
+	public final int checkPixel( int index )
+	{
+		setThreshold(index);
+
+		if( (data[index+offsets[0]]& 0xFF) > upper ) {
+			if( (data[index+offsets[1]]& 0xFF) > upper ) {
+				if( (data[index+offsets[2]]& 0xFF) > upper ) {
+					if( (data[index+offsets[3]]& 0xFF) > upper ) {
+						if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											return 1;
+										} else if( (data[index+offsets[15]]& 0xFF) > upper ) {
+											return 1;
+										}
+									} else if( (data[index+offsets[15]]& 0xFF) > upper ) {
+										if( (data[index+offsets[14]]& 0xFF) > upper ) {
+											return 1;
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[15]]& 0xFF) > upper ) {
+									if( (data[index+offsets[14]]& 0xFF) > upper ) {
+										if( (data[index+offsets[13]]& 0xFF) > upper ) {
+											return 1;
 										}
 									}
-								}
-							}
-						}
-					}
-				}
-			} else if( (data[offsets[1]]& 0xFF) > upper ) {
-				if( (data[offsets[2]]& 0xFF) > upper ) {
-					if( (data[offsets[3]]& 0xFF) > upper ) {
-						if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												return 1;
-											}
-										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
 																	return -1;
 																}
 															}
@@ -3694,35 +136,27 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[15]]& 0xFF) > upper ) {
+								if( (data[index+offsets[14]]& 0xFF) > upper ) {
+									if( (data[index+offsets[13]]& 0xFF) > upper ) {
+										if( (data[index+offsets[12]]& 0xFF) > upper ) {
+											return 1;
 										}
 									}
 								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
 																return -1;
 															}
 														}
@@ -3730,34 +164,18 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
 																	return 1;
 																}
 															}
@@ -3766,70 +184,48 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[15]]& 0xFF) > upper ) {
+							if( (data[index+offsets[14]]& 0xFF) > upper ) {
+								if( (data[index+offsets[13]]& 0xFF) > upper ) {
+									if( (data[index+offsets[12]]& 0xFF) > upper ) {
+										if( (data[index+offsets[11]]& 0xFF) > upper ) {
+											return 1;
 										}
 									}
 								}
 							}
-						} else if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
+						} else if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
 															return -1;
 														}
 													}
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
 																	return 1;
 																}
 															}
@@ -3838,35 +234,19 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
 								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
 																return 1;
 															}
 														}
@@ -3874,34 +254,18 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
 																	return -1;
 																}
 															}
@@ -3910,70 +274,50 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						}
+					} else if( (data[index+offsets[15]]& 0xFF) > upper ) {
+						if( (data[index+offsets[14]]& 0xFF) > upper ) {
+							if( (data[index+offsets[13]]& 0xFF) > upper ) {
+								if( (data[index+offsets[12]]& 0xFF) > upper ) {
+									if( (data[index+offsets[11]]& 0xFF) > upper ) {
+										if( (data[index+offsets[10]]& 0xFF) > upper ) {
+											return 1;
 										}
 									}
 								}
 							}
 						}
-					} else if( (data[offsets[3]]& 0xFF) < lower ) {
-						if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
+					} else if( (data[index+offsets[3]]& 0xFF) < lower ) {
+						if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
 														return -1;
 													}
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
 																	return 1;
 																}
 															}
@@ -3982,35 +326,19 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
 								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
 																return 1;
 															}
 														}
@@ -4018,34 +346,18 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
 																	return -1;
 																}
 															}
@@ -4054,70 +366,38 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
 								}
 							}
-						} else if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
+						} else if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
 															return 1;
 														}
 													}
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
 																	return -1;
 																}
 															}
@@ -4126,35 +406,19 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
 								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
 																return -1;
 															}
 														}
@@ -4162,34 +426,18 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
 																	return 1;
 																}
 															}
@@ -4198,70 +446,52 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						}
+					}
+				} else if( (data[index+offsets[15]]& 0xFF) > upper ) {
+					if( (data[index+offsets[14]]& 0xFF) > upper ) {
+						if( (data[index+offsets[13]]& 0xFF) > upper ) {
+							if( (data[index+offsets[12]]& 0xFF) > upper ) {
+								if( (data[index+offsets[11]]& 0xFF) > upper ) {
+									if( (data[index+offsets[10]]& 0xFF) > upper ) {
+										if( (data[index+offsets[9]]& 0xFF) > upper ) {
+											return 1;
 										}
 									}
 								}
 							}
 						}
 					}
-				} else if( (data[offsets[2]]& 0xFF) < lower ) {
-					if( (data[offsets[3]]& 0xFF) < lower ) {
-						if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
+				} else if( (data[index+offsets[2]]& 0xFF) < lower ) {
+					if( (data[index+offsets[3]]& 0xFF) < lower ) {
+						if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
 													return -1;
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
 																	return 1;
 																}
 															}
@@ -4270,35 +500,19 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
 								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
 																return 1;
 															}
 														}
@@ -4306,34 +520,18 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
 																	return -1;
 																}
 															}
@@ -4342,70 +540,38 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
 								}
 							}
-						} else if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
+						} else if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
 															return 1;
 														}
 													}
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
 																	return -1;
 																}
 															}
@@ -4414,35 +580,19 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
 								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
 																return -1;
 															}
 														}
@@ -4450,34 +600,18 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
 																	return 1;
 																}
 															}
@@ -4486,70 +620,38 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
 								}
 							}
 						}
-					} else if( (data[offsets[3]]& 0xFF) > upper ) {
-						if( (data[offsets[4]]& 0xFF) > upper ) {
-							if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
+					} else if( (data[index+offsets[3]]& 0xFF) > upper ) {
+						if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
 														return 1;
 													}
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
 																	return -1;
 																}
 															}
@@ -4558,35 +660,19 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
 								}
-							} else if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
 																return -1;
 															}
 														}
@@ -4594,34 +680,18 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
 																	return 1;
 																}
 															}
@@ -4630,70 +700,38 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
 								}
 							}
-						} else if( (data[offsets[4]]& 0xFF) < lower ) {
-							if( (data[offsets[5]]& 0xFF) < lower ) {
-								if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
+						} else if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
 															return -1;
 														}
 													}
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
 																	return 1;
 																}
 															}
@@ -4702,35 +740,19 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
 								}
-							} else if( (data[offsets[5]]& 0xFF) > upper ) {
-								if( (data[offsets[6]]& 0xFF) > upper ) {
-									if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
 																return 1;
 															}
 														}
@@ -4738,34 +760,18 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
-																	if( (data[offsets[15]]& 0xFF) < lower ) {
-																		return -1;
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
+									} else if( lower7(index) ) {
+										return -1;
 									}
-								} else if( (data[offsets[6]]& 0xFF) < lower ) {
-									if( (data[offsets[7]]& 0xFF) < lower ) {
-										if( (data[offsets[8]]& 0xFF) < lower ) {
-											if( (data[offsets[9]]& 0xFF) < lower ) {
-												if( (data[offsets[10]]& 0xFF) < lower ) {
-													if( (data[offsets[11]]& 0xFF) < lower ) {
-														if( (data[offsets[12]]& 0xFF) < lower ) {
-															if( (data[offsets[13]]& 0xFF) < lower ) {
-																if( (data[offsets[14]]& 0xFF) < lower ) {
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
 																	return -1;
 																}
 															}
@@ -4774,17 +780,55 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
-									} else if( (data[offsets[7]]& 0xFF) > upper ) {
-										if( (data[offsets[8]]& 0xFF) > upper ) {
-											if( (data[offsets[9]]& 0xFF) > upper ) {
-												if( (data[offsets[10]]& 0xFF) > upper ) {
-													if( (data[offsets[11]]& 0xFF) > upper ) {
-														if( (data[offsets[12]]& 0xFF) > upper ) {
-															if( (data[offsets[13]]& 0xFF) > upper ) {
-																if( (data[offsets[14]]& 0xFF) > upper ) {
-																	if( (data[offsets[15]]& 0xFF) > upper ) {
-																		return 1;
-																	}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						}
+					}
+				}
+			} else if( (data[index+offsets[15]]& 0xFF) > upper ) {
+				if( (data[index+offsets[14]]& 0xFF) > upper ) {
+					if( (data[index+offsets[13]]& 0xFF) > upper ) {
+						if( (data[index+offsets[12]]& 0xFF) > upper ) {
+							if( (data[index+offsets[11]]& 0xFF) > upper ) {
+								if( (data[index+offsets[10]]& 0xFF) > upper ) {
+									if( (data[index+offsets[9]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											return 1;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			} else if( (data[index+offsets[1]]& 0xFF) < lower ) {
+				if( (data[index+offsets[2]]& 0xFF) < lower ) {
+					if( (data[index+offsets[3]]& 0xFF) < lower ) {
+						if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												return -1;
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
 																}
 															}
 														}
@@ -4792,6 +836,1960 @@ public class ImplFastCorner9_U8 extends ImplFastHelper_U8
 												}
 											}
 										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															return 1;
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						}
+					} else if( (data[index+offsets[3]]& 0xFF) > upper ) {
+						if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														return 1;
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															return -1;
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						}
+					}
+				} else if( (data[index+offsets[2]]& 0xFF) > upper ) {
+					if( (data[index+offsets[3]]& 0xFF) > upper ) {
+						if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													return 1;
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															return -1;
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						}
+					} else if( (data[index+offsets[3]]& 0xFF) < lower ) {
+						if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														return -1;
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															return 1;
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		} else if( (data[index+offsets[0]]& 0xFF) < lower ) {
+			if( (data[index+offsets[1]]& 0xFF) < lower ) {
+				if( (data[index+offsets[2]]& 0xFF) < lower ) {
+					if( (data[index+offsets[3]]& 0xFF) < lower ) {
+						if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											return -1;
+										} else if( (data[index+offsets[15]]& 0xFF) < lower ) {
+											return -1;
+										}
+									} else if( (data[index+offsets[15]]& 0xFF) < lower ) {
+										if( (data[index+offsets[14]]& 0xFF) < lower ) {
+											return -1;
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[15]]& 0xFF) < lower ) {
+									if( (data[index+offsets[14]]& 0xFF) < lower ) {
+										if( (data[index+offsets[13]]& 0xFF) < lower ) {
+											return -1;
+										}
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[15]]& 0xFF) < lower ) {
+								if( (data[index+offsets[14]]& 0xFF) < lower ) {
+									if( (data[index+offsets[13]]& 0xFF) < lower ) {
+										if( (data[index+offsets[12]]& 0xFF) < lower ) {
+											return -1;
+										}
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[15]]& 0xFF) < lower ) {
+							if( (data[index+offsets[14]]& 0xFF) < lower ) {
+								if( (data[index+offsets[13]]& 0xFF) < lower ) {
+									if( (data[index+offsets[12]]& 0xFF) < lower ) {
+										if( (data[index+offsets[11]]& 0xFF) < lower ) {
+											return -1;
+										}
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															return 1;
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						}
+					} else if( (data[index+offsets[15]]& 0xFF) < lower ) {
+						if( (data[index+offsets[14]]& 0xFF) < lower ) {
+							if( (data[index+offsets[13]]& 0xFF) < lower ) {
+								if( (data[index+offsets[12]]& 0xFF) < lower ) {
+									if( (data[index+offsets[11]]& 0xFF) < lower ) {
+										if( (data[index+offsets[10]]& 0xFF) < lower ) {
+											return -1;
+										}
+									}
+								}
+							}
+						}
+					} else if( (data[index+offsets[3]]& 0xFF) > upper ) {
+						if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														return 1;
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															return -1;
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						}
+					}
+				} else if( (data[index+offsets[15]]& 0xFF) < lower ) {
+					if( (data[index+offsets[14]]& 0xFF) < lower ) {
+						if( (data[index+offsets[13]]& 0xFF) < lower ) {
+							if( (data[index+offsets[12]]& 0xFF) < lower ) {
+								if( (data[index+offsets[11]]& 0xFF) < lower ) {
+									if( (data[index+offsets[10]]& 0xFF) < lower ) {
+										if( (data[index+offsets[9]]& 0xFF) < lower ) {
+											return -1;
+										}
+									}
+								}
+							}
+						}
+					}
+				} else if( (data[index+offsets[2]]& 0xFF) > upper ) {
+					if( (data[index+offsets[3]]& 0xFF) > upper ) {
+						if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													return 1;
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															return -1;
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						}
+					} else if( (data[index+offsets[3]]& 0xFF) < lower ) {
+						if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														return -1;
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															return 1;
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						}
+					}
+				}
+			} else if( (data[index+offsets[15]]& 0xFF) < lower ) {
+				if( (data[index+offsets[14]]& 0xFF) < lower ) {
+					if( (data[index+offsets[13]]& 0xFF) < lower ) {
+						if( (data[index+offsets[12]]& 0xFF) < lower ) {
+							if( (data[index+offsets[11]]& 0xFF) < lower ) {
+								if( (data[index+offsets[10]]& 0xFF) < lower ) {
+									if( (data[index+offsets[9]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											return -1;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			} else if( (data[index+offsets[1]]& 0xFF) > upper ) {
+				if( (data[index+offsets[2]]& 0xFF) > upper ) {
+					if( (data[index+offsets[3]]& 0xFF) > upper ) {
+						if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												return 1;
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															return -1;
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						}
+					} else if( (data[index+offsets[3]]& 0xFF) < lower ) {
+						if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														return -1;
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															return 1;
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						}
+					}
+				} else if( (data[index+offsets[2]]& 0xFF) < lower ) {
+					if( (data[index+offsets[3]]& 0xFF) < lower ) {
+						if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													return -1;
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															return 1;
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						}
+					} else if( (data[index+offsets[3]]& 0xFF) > upper ) {
+						if( (data[index+offsets[4]]& 0xFF) > upper ) {
+							if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														return 1;
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																return -1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							}
+						} else if( (data[index+offsets[4]]& 0xFF) < lower ) {
+							if( (data[index+offsets[5]]& 0xFF) < lower ) {
+								if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															return -1;
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																if( (data[index+offsets[14]]& 0xFF) > upper ) {
+																	return 1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								}
+							} else if( (data[index+offsets[5]]& 0xFF) > upper ) {
+								if( (data[index+offsets[6]]& 0xFF) > upper ) {
+									if( (data[index+offsets[7]]& 0xFF) > upper ) {
+										if( (data[index+offsets[8]]& 0xFF) > upper ) {
+											if( (data[index+offsets[9]]& 0xFF) > upper ) {
+												if( (data[index+offsets[10]]& 0xFF) > upper ) {
+													if( (data[index+offsets[11]]& 0xFF) > upper ) {
+														if( (data[index+offsets[12]]& 0xFF) > upper ) {
+															if( (data[index+offsets[13]]& 0xFF) > upper ) {
+																return 1;
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( lower7(index) ) {
+										return -1;
+									}
+								} else if( (data[index+offsets[6]]& 0xFF) < lower ) {
+									if( (data[index+offsets[7]]& 0xFF) < lower ) {
+										if( (data[index+offsets[8]]& 0xFF) < lower ) {
+											if( (data[index+offsets[9]]& 0xFF) < lower ) {
+												if( (data[index+offsets[10]]& 0xFF) < lower ) {
+													if( (data[index+offsets[11]]& 0xFF) < lower ) {
+														if( (data[index+offsets[12]]& 0xFF) < lower ) {
+															if( (data[index+offsets[13]]& 0xFF) < lower ) {
+																if( (data[index+offsets[14]]& 0xFF) < lower ) {
+																	return -1;
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									} else if( upper7(index) ) {
+										return 1;
 									}
 								}
 							}

@@ -35,4 +35,6 @@ public interface FastHelper<T extends ImageGray<T>> {
 	float scoreLower( int index );
 
 	float scoreUpper( int index );
+
+	void setThreshold( int index );
 }

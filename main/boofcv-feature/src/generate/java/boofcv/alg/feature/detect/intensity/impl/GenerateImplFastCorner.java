@@ -21,7 +21,6 @@ package boofcv.alg.feature.detect.intensity.impl;
 import boofcv.misc.AutoTypeImage;
 import boofcv.misc.CircularIndex;
 import boofcv.misc.CodeGeneratorBase;
-import boofcv.struct.image.ImageType;
 import org.ddogleg.struct.FastQueue;
 
 import java.io.FileNotFoundException;
@@ -40,6 +39,8 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 	String sumType;
 	String bitwise;
 	String dataType;
+
+	boolean innerFunctionMode;
 
 	boolean useElse;
 	int tabs;
@@ -74,16 +75,18 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 
 		initFile();
 		printPreamble();
+		// needed to reduce the code size because there's an upper limit for how many bytes of compiled
+		// code there can be in a java function
+		printSpecial(TOTAL_CIRCLE-minContinuous,true);
+		printSpecial(TOTAL_CIRCLE-minContinuous,false);
 		printCheck();
 
 		out.println("}");
+		System.out.println("Done");
 	}
 
 	private void printPreamble() {
-		String imageClassName = imageType.getImageName(ImageType.Family.GRAY);
-
 		out.print(
-				"import boofcv.struct.image."+imageClassName+";\n" +
 				"\n"+
 				"/**\n" +
 				" * <p>\n" +
@@ -105,6 +108,18 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 				"\t}\n\n");
 	}
 
+	private void printSpecial( int start , boolean upper ) {
+
+		out.print(
+				"\tpublic final boolean "+(upper?"upper":"lower")+start+"( int index )\n" +
+				"\t{\n");
+
+		innerFunctionMode = true;
+		print(start,upper);
+
+		out.print("\t}\n\n");
+	}
+
 	private void printCheck() {
 
 		out.print(
@@ -114,26 +129,28 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 				"\t@Override\n" +
 				"\tpublic final int checkPixel( int index )\n" +
 				"\t{\n" +
-				"\t\tcenterValue = data[index]"+bitwise+";\n"+
-				"\t\tlower = centerValue - tol;\n"+
-				"\t\tupper = centerValue + tol;\n"+
+				"\t\tsetThreshold(index);\n"+
 				"\n");
 
-		print();
+		innerFunctionMode = false;
+		print(0,true);
 
 		out.print("\t}\n\n");
 	}
 
-	private void print() {
+	private void print( int start , boolean upper ) {
 		FastQueue<Set> queue = new FastQueue<>(Set.class,true);
 
 		Set active = queue.grow();
-		active.start = 0;
+		active.start = start;
+		active.stop = start;
 		active.complete = false;
-		active.upper = true;
-		active.tryTail = true;
+		active.upper = upper;
+		active.tryTail = start==0;
 
 		useElse = false;
+
+		int specialized = start == 0 ? TOTAL_CIRCLE-minContinuous : 0;
 
 		tabs = 2;
 		while( queue.size > 0 ) {
@@ -151,14 +168,13 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 				}
 			}
 			if( active.complete ) {
-				undoThenForwards(queue, active);
+				undoThenForwards(queue, active, specialized);
 			} else {
 				int bit = active.start > active.stop ? active.start : active.stop;
 				printIf(useElse, tabs++, bit, active.upper);
-
-				if( active.length() == minContinuous ) {
-					printReturn(--tabs,active.upper?1:-1);
-					if( queue.size == 1 && active.stop >= 0 ) {
+				if (active.length() == minContinuous) {
+					printReturn(--tabs, active.upper ? 1 : -1);
+					if (start == 0 && queue.size == 1 && active.stop >= 0) {
 						if (active.tryTail) {
 							// if it hasn't tried the bits on the tail do that now
 							useElse = true;
@@ -171,12 +187,20 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 								printCloseIf(tabs--);
 							}
 							if (possibleToComplete(active.stop + 1)) {
-								// continue moving forward with a new assumption
-								useElse = true;
-								Set next = queue.grow();
-								next.start = next.stop = active.stop + 1;
-								next.complete = false;
-								next.upper = !active.upper;
+								// see if a shortcut can be used
+								if( active.stop+1 == specialized ) {
+									printCallSpecialized(true, tabs, active.stop+1, !active.upper);
+									printReturn(tabs, !active.upper ? 1 : -1);
+									printCloseIf(tabs--);
+									useElse = true;
+								} else {
+									// continue moving forward with a new assumption
+									useElse = true;
+									Set next = queue.grow();
+									next.start = next.stop = active.stop + 1;
+									next.complete = false;
+									next.upper = !active.upper;
+								}
 
 								active.tryTail = false;
 								active.start = TOTAL_CIRCLE - 1;
@@ -191,9 +215,9 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 						}
 					} else {
 						active.complete = true;
-						undoThenForwards(queue, active);
+						undoThenForwards(queue, active, specialized);
 					}
-				} else if( active.stop >= active.start ){
+				} else if (active.stop >= active.start) {
 					useElse = false;
 					active.stop += 1;
 				} else {
@@ -202,21 +226,27 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 				}
 			}
 		}
-		printCloseIf(2);
+		if( !innerFunctionMode )
+			printCloseIf(2);
 		printReturn(1,0);
-		System.out.println("Done");
 	}
 
-	private void undoThenForwards(FastQueue<Set> queue, Set active) {
+	private void undoThenForwards(FastQueue<Set> queue, Set active, int specialized ) {
 		while( !possibleToComplete(active.stop) && active.stop >= active.start ) {
 			printCloseIf(tabs--);
 			active.stop -= 1;
 		}
 		if( possibleToComplete(active.stop) && active.stop > active.start ) {
-			Set next = queue.grow();
-			next.start = next.stop = active.stop;
-			next.complete = false;
-			next.upper = !active.upper;
+			if( active.stop == specialized ) {
+				printCallSpecialized(true, tabs, active.stop, !active.upper);
+				printReturn(tabs, !active.upper ? 1 : -1);
+				printCloseIf(tabs--);
+			} else {
+				Set next = queue.grow();
+				next.start = next.stop = active.stop;
+				next.complete = false;
+				next.upper = !active.upper;
+			}
 			useElse = true;
 			active.stop -= 1;
 		} else {
@@ -236,12 +266,21 @@ public class GenerateImplFastCorner extends CodeGeneratorBase {
 		out.println(tabs(numTabs)+strElse+"if( "+readBit(bit)+" "+comparison+" ) {");
 	}
 
+	private void printCallSpecialized( boolean isElse, int numTabs , int bit,  boolean upper ) {
+		String strElse = isElse ? "} else " : "";
+		out.println(tabs(numTabs)+strElse+"if( "+(upper?"upper":"lower")+bit+"(index) ) {");
+	}
+
 	private void printReturn( int numTabs , int value ) {
-		out.println(tabs(numTabs+1)+"return "+value+";");
+		if( innerFunctionMode ) {
+			out.println(tabs(numTabs + 1) + "return " + (value!=0) + ";");
+		} else {
+			out.println(tabs(numTabs + 1) + "return " + value + ";");
+		}
 	}
 
 	private String readBit( int bit ) {
-		return "(data[offsets["+bit+"]]"+bitwise+")";
+		return "(data[index+offsets["+bit+"]]"+bitwise+")";
 	}
 
 	private void printCloseIf( int numTabs ) {

@@ -79,4 +79,11 @@ public abstract class ImplFastHelper_F32 implements FastHelper<GrayF32> {
 
 		return total - centerValue*count;
 	}
+
+	@Override
+	public void setThreshold( int index ) {
+		centerValue = data[index];
+		lower = centerValue - tol;
+		upper = centerValue + tol;
+	}
 }

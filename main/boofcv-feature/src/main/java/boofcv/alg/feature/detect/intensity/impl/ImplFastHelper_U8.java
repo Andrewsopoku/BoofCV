@@ -80,4 +80,11 @@ public abstract class ImplFastHelper_U8 implements FastHelper<GrayU8> {
 
 		return total - centerValue*count;
 	}
+
+	@Override
+	public void setThreshold( int index ) {
+		centerValue = data[index]& 0xFF;
+		lower = centerValue - tol;
+		upper = centerValue + tol;
+	}
 }
